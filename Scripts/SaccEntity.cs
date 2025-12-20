@@ -1168,13 +1168,12 @@ namespace SaccFlightAndVehicles
                     transform.localPosition = Spawnposition;
                     transform.localRotation = Spawnrotation;
                 }
-                Rigidbody rb = GetComponent<Rigidbody>();
-                if (rb)
+                if (VehicleRigidbody)
                 {
-                    rb.velocity = Vector3.zero;
-                    rb.angularVelocity = Vector3.zero;//editor needs this
-                    rb.position = transform.position;
-                    rb.rotation = transform.rotation;
+                    VehicleRigidbody.velocity = Vector3.zero;
+                    VehicleRigidbody.angularVelocity = Vector3.zero;//editor needs this
+                    VehicleRigidbody.position = transform.position;
+                    VehicleRigidbody.rotation = transform.rotation;
                 }
                 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, nameof(SendRespawn));
             }
