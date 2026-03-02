@@ -1,0 +1,408 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8815609176575221438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5544136584463310193}
+  m_Layer: 0
+  m_Name: 5LaserArray
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5544136584463310193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8815609176575221438}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -559.3, y: 3360, z: 500}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4909055152272841394}
+  - {fileID: 5571034687716615662}
+  - {fileID: 7960275320612028942}
+  - {fileID: 4697451508427417948}
+  - {fileID: 1593110632647167058}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1251155560095188891
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5544136584463310193}
+    m_Modifications:
+    - target: {fileID: 583337703622587840, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 583337703622587840, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    - target: {fileID: 1984361073850443855, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1984361073850443855, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147931879, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_Name
+      value: NPCLaserTurretMini (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668306102001981071, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7668306102001981071, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+--- !u!4 &4697451508427417948 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+  m_PrefabInstance: {fileID: 1251155560095188891}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1462609669260113013
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5544136584463310193}
+    m_Modifications:
+    - target: {fileID: 583337703622587840, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 583337703622587840, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    - target: {fileID: 1984361073850443855, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1984361073850443855, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147931879, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_Name
+      value: NPCLaserTurretMini
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668306102001981071, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7668306102001981071, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+--- !u!4 &4909055152272841394 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+  m_PrefabInstance: {fileID: 1462609669260113013}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2106565942521662249
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5544136584463310193}
+    m_Modifications:
+    - target: {fileID: 583337703622587840, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 583337703622587840, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    - target: {fileID: 1984361073850443855, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1984361073850443855, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147931879, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_Name
+      value: NPCLaserTurretMini (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668306102001981071, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7668306102001981071, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+--- !u!4 &5571034687716615662 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+  m_PrefabInstance: {fileID: 2106565942521662249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4473437974388370633
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5544136584463310193}
+    m_Modifications:
+    - target: {fileID: 583337703622587840, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 583337703622587840, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    - target: {fileID: 1984361073850443855, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1984361073850443855, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147931879, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_Name
+      value: NPCLaserTurretMini (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668306102001981071, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7668306102001981071, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+--- !u!4 &7960275320612028942 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+  m_PrefabInstance: {fileID: 4473437974388370633}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5077687317391467157
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5544136584463310193}
+    m_Modifications:
+    - target: {fileID: 583337703622587840, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 583337703622587840, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    - target: {fileID: 1984361073850443855, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 1984361073850443855, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5795090488147931879, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: m_Name
+      value: NPCLaserTurretMini (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7668306102001981071, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+      propertyPath: serializationData.Prefab
+      value: 
+      objectReference: {fileID: 7668306102001981071, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+--- !u!4 &1593110632647167058 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5795090488147766983, guid: 9d12a6d6e843eb5439e3982faac622f8, type: 3}
+  m_PrefabInstance: {fileID: 5077687317391467157}
+  m_PrefabAsset: {fileID: 0}
