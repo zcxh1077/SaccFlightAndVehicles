@@ -58,11 +58,14 @@ namespace SaccFlightAndVehicles
         private bool isOwner;
         private bool dead;
         private bool initialized;
+        // オーナー切断時のリスポーン再スケジュール用
+        private float deadSinceTime = -1f;
 
         // ダメージキューイング（SaccTarget準拠の0.2秒バッチ送信）
         private const float DAMAGESENDINTERVAL = 0.2f;
         private float queuedDamage;
         private float lastDamageSentTime;
+        private bool damageQueueScheduled;
 
         // 攻撃者情報
         [System.NonSerialized] public SaccEntity LastAttacker;
@@ -154,8 +157,8 @@ namespace SaccFlightAndVehicles
 
             LastHitDamage = damage;
             DamagePrediction();
-            // ローカルでダメージ処理
-            SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.Self, nameof(SendBossDamageEvent), damage);
+            // ローカルでダメージ処理（直接呼び出し）
+            SendBossDamageEvent(damage);
             // 他クライアントへバッチ送信
             QueueDamage(damage);
         }
@@ -170,12 +173,12 @@ namespace SaccFlightAndVehicles
             if (Time.time - predictedLastHitTime > 2f)
             {
                 predictedLastHitTime = Time.time;
-                predictedHealth = Mathf.Min(Health - LastHitDamage, MaxHealth);
+                predictedHealth = Mathf.Max(Health - LastHitDamage, 0f);
             }
             else
             {
                 predictedLastHitTime = Time.time;
-                predictedHealth = Mathf.Min(predictedHealth - LastHitDamage, MaxHealth);
+                predictedHealth = Mathf.Max(predictedHealth - LastHitDamage, 0f);
             }
             if (!dead && predictedHealth <= 0f)
             {
@@ -205,6 +208,7 @@ namespace SaccFlightAndVehicles
 
         /// <summary>
         /// ダメージキューイング。0.2秒間隔でバッチ送信する（SaccTarget準拠）。
+        /// フラグ管理により遅延イベントの重複スケジュールを防止する。
         /// </summary>
         private void QueueDamage(float dmg)
         {
@@ -215,8 +219,9 @@ namespace SaccFlightAndVehicles
                 lastDamageSentTime = Time.time;
                 queuedDamage = 0;
             }
-            else
+            else if (!damageQueueScheduled)
             {
+                damageQueueScheduled = true;
                 SendCustomEventDelayedSeconds(nameof(SendQueuedBossDamage), DAMAGESENDINTERVAL);
             }
         }
@@ -226,18 +231,20 @@ namespace SaccFlightAndVehicles
         /// </summary>
         public void SendQueuedBossDamage()
         {
-            if (Time.time - lastDamageSentTime > DAMAGESENDINTERVAL)
+            damageQueueScheduled = false;
+            if (queuedDamage > 0)
             {
-                if (queuedDamage > 0)
+                if (Time.time - lastDamageSentTime > DAMAGESENDINTERVAL)
                 {
                     SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.Others, nameof(SendBossDamageEvent), queuedDamage);
                     lastDamageSentTime = Time.time;
                     queuedDamage = 0;
                 }
-            }
-            else
-            {
-                SendCustomEventDelayedSeconds(nameof(SendQueuedBossDamage), DAMAGESENDINTERVAL);
+                else
+                {
+                    damageQueueScheduled = true;
+                    SendCustomEventDelayedSeconds(nameof(SendQueuedBossDamage), DAMAGESENDINTERVAL);
+                }
             }
         }
 
@@ -261,7 +268,7 @@ namespace SaccFlightAndVehicles
             // オーナーのみHP減算
             if (localPlayer != null && localPlayer.IsOwner(EntityControl.gameObject))
             {
-                Health = Mathf.Min(Health - dmg, MaxHealth);
+                Health = Mathf.Max(Health - dmg, 0f);
 
                 if (Health <= 0f)
                 {
@@ -312,7 +319,7 @@ namespace SaccFlightAndVehicles
                     {
                         KillFeed.SetProgramVariable("useCustomKillMessage", true);
                         KillFeed.SetProgramVariable("KilledPlayerID", -2);
-                        int MsgIndex = (byte)Random.Range(0, BossKilledMessages.Length);
+                        int MsgIndex = Random.Range(0, BossKilledMessages.Length);
                         string killmessage = BossKilledMessages[MsgIndex];
                         KillFeed.SetProgramVariable("MyKillMsg", killmessage);
                         KillFeed.SendCustomEvent("sendKillMessage");
@@ -395,6 +402,7 @@ namespace SaccFlightAndVehicles
             EntityControl.SendEventToExtensions("SFEXT_G_Dead");
 
             // リスポーン予約（オーナーのみ）
+            deadSinceTime = Time.time;
             if (RespawnDelay > 0f && isOwner)
             {
                 SendCustomEventDelayedSeconds(nameof(RespawnBoss), RespawnDelay);
@@ -527,6 +535,7 @@ namespace SaccFlightAndVehicles
 
         /// <summary>
         /// オーナーシップ移譲時の処理。
+        /// 死亡中にオーナーになった場合、元オーナーが設定したリスポーンタイマーを引き継ぐ。
         /// </summary>
         public override void OnOwnershipTransferred(VRCPlayerApi player)
         {
@@ -537,6 +546,21 @@ namespace SaccFlightAndVehicles
                 if (dead)
                 {
                     RequestSerialization();
+                    // 元オーナーのリスポーンタイマーが失われた可能性があるため再スケジュール
+                    if (RespawnDelay > 0f && deadSinceTime >= 0f)
+                    {
+                        float elapsed = Time.time - deadSinceTime;
+                        float remaining = RespawnDelay - elapsed;
+                        if (remaining > 0f)
+                        {
+                            SendCustomEventDelayedSeconds(nameof(RespawnBoss), remaining);
+                        }
+                        else
+                        {
+                            // 既に経過時間が超えている場合は即リスポーン
+                            RespawnBoss();
+                        }
+                    }
                 }
             }
             else

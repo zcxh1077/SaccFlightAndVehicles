@@ -19,6 +19,8 @@ namespace SaccFlightAndVehicles
         public UdonSharpBehaviour PartTarget;
         [Tooltip("パーツ破壊時にボスに与えるダメージ。0の場合はPartTarget.FullHealthを使用")]
         public float DamageOnDestruction = 0f;
+        [Tooltip("PartTarget.FullHealthの取得に失敗した場合のフォールバックダメージ")]
+        public float FallbackDamage = 1000f;
 
         [Header("子タレット連動")]
         [Tooltip("このパーツ破壊時に無効化するタレットのSaccEntity")]
@@ -68,7 +70,7 @@ namespace SaccFlightAndVehicles
                         }
                         else
                         {
-                            damage = 1000f; // フォールバック値
+                            damage = FallbackDamage;
                         }
                     }
                     BossController.ReceiveDamage(damage);
