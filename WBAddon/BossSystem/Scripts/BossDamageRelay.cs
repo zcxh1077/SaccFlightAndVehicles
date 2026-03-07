@@ -60,7 +60,7 @@ namespace SaccFlightAndVehicles
                 {
                     if (float.TryParse(pname.Substring(2), out float dmg))
                     {
-                        damage = dmg;
+                        damage = Mathf.Max(dmg, 0f);
                     }
                 }
                 else if (pname.StartsWith("t:"))

@@ -63,6 +63,7 @@ namespace SaccFlightAndVehicles
         private const float DAMAGESENDINTERVAL = 0.2f;
         private float queuedDamage;
         private float lastDamageSentTime;
+        private bool isQueueFlushScheduled;
 
         // 攻撃者情報
         [System.NonSerialized] public SaccEntity LastAttacker;
@@ -151,6 +152,7 @@ namespace SaccFlightAndVehicles
         public void ReceiveDamage(float damage)
         {
             if (dead || EntityControl._dead || EntityControl.invincible) return;
+            if (damage <= 0f) return;
 
             LastHitDamage = damage;
             DamagePrediction();
@@ -217,7 +219,11 @@ namespace SaccFlightAndVehicles
             }
             else
             {
-                SendCustomEventDelayedSeconds(nameof(SendQueuedBossDamage), DAMAGESENDINTERVAL);
+                if (!isQueueFlushScheduled)
+                {
+                    isQueueFlushScheduled = true;
+                    SendCustomEventDelayedSeconds(nameof(SendQueuedBossDamage), DAMAGESENDINTERVAL);
+                }
             }
         }
 
@@ -228,6 +234,7 @@ namespace SaccFlightAndVehicles
         {
             if (Time.time - lastDamageSentTime > DAMAGESENDINTERVAL)
             {
+                isQueueFlushScheduled = false;
                 if (queuedDamage > 0)
                 {
                     SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.Others, nameof(SendBossDamageEvent), queuedDamage);
@@ -261,7 +268,7 @@ namespace SaccFlightAndVehicles
             // オーナーのみHP減算
             if (localPlayer != null && localPlayer.IsOwner(EntityControl.gameObject))
             {
-                Health = Mathf.Min(Health - dmg, MaxHealth);
+                Health = Mathf.Min(Health - Mathf.Max(dmg, 0f), MaxHealth);
 
                 if (Health <= 0f)
                 {
@@ -308,8 +315,9 @@ namespace SaccFlightAndVehicles
                         LastAttacker = attackersVehicle.GetComponent<SaccEntity>();
                     }
 
-                    if (killerID == localPlayer.playerId)
+                    if (localPlayer != null && killerID == localPlayer.playerId)
                     {
+                        if (BossKilledMessages == null || BossKilledMessages.Length == 0) return;
                         KillFeed.SetProgramVariable("useCustomKillMessage", true);
                         KillFeed.SetProgramVariable("KilledPlayerID", -2);
                         int MsgIndex = (byte)Random.Range(0, BossKilledMessages.Length);
