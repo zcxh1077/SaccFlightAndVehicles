@@ -501,7 +501,10 @@ namespace SaccFlightAndVehicles
                     // 現在ターゲットの視線チェック（レイキャスト）
                     RaycastHit hitcurrent;
                     bool lineOfSight = Physics.Raycast(rotatorPos, currentTargetDir, out hitcurrent, Mathf.Infinity, raycastLayerMask, QueryTriggerInteraction.Ignore);
-                    if (!lineOfSight || !RayhitIsOnCorrectLayer(hitcurrent))
+                    bool hitIsCurrentTarget = hitcurrent.collider &&
+                        (hitcurrent.collider.gameObject == currentTarget ||
+                         hitcurrent.collider.transform.IsChildOf(currentTarget.transform));
+                    if (!lineOfSight || !hitIsCurrentTarget)
                     {
                         targetObscuredDelay += deltaTime;
                     }
@@ -548,11 +551,14 @@ namespace SaccFlightAndVehicles
                     // 候補の視線チェック（レイキャスト）
                     RaycastHit hitnext;
                     bool lineOfSight = Physics.Raycast(rotatorPos, candidateDir, out hitnext, Mathf.Infinity, raycastLayerMask, QueryTriggerInteraction.Ignore);
+                    bool hitIsCandidate = hitnext.collider &&
+                        (hitnext.collider.gameObject == candidateTarget ||
+                         hitnext.collider.transform.IsChildOf(candidateTarget.transform));
 
                     float currentTargetAngle = hasTarget ? Vector3.Angle(Rotator.forward, aamTargets[targetIndex].transform.position - rotatorPos) : 999f;
 
                     if (lineOfSight
-                        && RayhitIsOnCorrectLayer(hitnext)
+                        && hitIsCandidate
                         && candidateAngle < LockAngle
                         && candidateDist < MaxTargetDistance
                         && IsWithinAzimuthLimits(candidateTarget.transform.position)
@@ -719,6 +725,7 @@ namespace SaccFlightAndVehicles
         public void ReAppear()
         {
             if (TurretAnimator) { TurretAnimator.SetTrigger("reappear"); }
+            EntityControl.invincible = true;
             EntityControl.dead = false;
             if (isOwner)
             {
@@ -734,6 +741,7 @@ namespace SaccFlightAndVehicles
         {
             Health = fullHealth;
             EntityControl.dead = false;
+            EntityControl.invincible = false;
         }
 
         // --- SaccEntity イベント ---
@@ -822,21 +830,17 @@ namespace SaccFlightAndVehicles
         public override void OnDeserialization()
         {
             // 射撃の同期
-            if (fireCount != localFireCount)
+            // 初回デシリアライズは fireCount の値に関わらずスキップ（レイトジョイナー対策）
+            if (!initialSyncDone)
             {
-                // 初回デシリアライズ時はレイトジョイナー対策として
-                // ローカルカウントを同期値に合わせるだけで発射エフェクトをスキップする
-                if (!initialSyncDone)
-                {
-                    localFireCount = fireCount;
-                    initialSyncDone = true;
-                }
-                else
-                {
-                    localFireCount = fireCount;
-                    if (TurretAnimator) { TurretAnimator.SetTrigger(AnimTriggerFire); }
-                    if (FiringSound) { FiringSound.PlayOneShot(FiringSound.clip); }
-                }
+                initialSyncDone = true;
+                localFireCount = fireCount;
+            }
+            else if (fireCount != localFireCount)
+            {
+                localFireCount = fireCount;
+                if (TurretAnimator) { TurretAnimator.SetTrigger(AnimTriggerFire); }
+                if (FiringSound) { FiringSound.PlayOneShot(FiringSound.clip); }
             }
 
             // ターゲットの同期
